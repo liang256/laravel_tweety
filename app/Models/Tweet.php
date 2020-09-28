@@ -9,8 +9,16 @@ class Tweet extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     public function user()
     {
     	return $this->belongsTo(User::class);
+    }
+
+    public function tweetedBy($user)
+    {
+    	$this->user_id = $user->id;
+    	$this->save();
     }
 }
