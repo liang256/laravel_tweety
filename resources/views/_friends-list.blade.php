@@ -5,7 +5,7 @@
 		<li class="mb-4">
 			<div class="flex items-center">
 				<img 
-					src="{{}}" 
+					src="https://avatars.dicebear.com/api/male/hhh.svg?w=40&h=40" 
 					alt=""
 					class="rounded-full mr-2"
 				>

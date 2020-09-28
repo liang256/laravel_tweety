@@ -9,9 +9,9 @@ class TweetsController extends Controller
 {
     public function store()
     {
-    	//echo request('body');
+    	$attributes = request()->validate(['body'=>'required|max:255']);
     	$tweet = new Tweet([
-    		'body'=>request('body'),
+    		'body'=>$attributes['body'],
     		'user_id'=>auth()->user()->id
     	]);
     	$tweet->save();
