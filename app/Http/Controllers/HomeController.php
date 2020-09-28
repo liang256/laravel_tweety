@@ -24,7 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $tweets = Tweet::all();
+        $tweets = Tweet::latest()->get();
         return view('home',[
             'tweets'=>$tweets
         ]);
