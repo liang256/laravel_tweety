@@ -56,7 +56,13 @@ class User extends Authenticatable
     // return tweets ordered by desc by this user
     public function timeline()
     {
-        return $this->tweets()->latest()->get();
+        $following_ids = $this->following()->pluck('id');
+        return Tweet::whereIn('user_id',$following_ids)
+            ->orWhere('user_id',$this->id)
+            ->latest()
+            ->get();
+
+        //return Tweet::where('user_id',$this->id)->latest()->get();
     }
 
     // make link to other into follows table

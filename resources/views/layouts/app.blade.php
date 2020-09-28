@@ -22,8 +22,17 @@
 <body>
     <div id="app">
         <section class="px-8 mb-4">
-            <header class="container mx-auto">
-                <img src="{{asset('logo.png')}}" alt="logo" class="w-20">
+            <header class="container mx-auto border">
+                <div class="flex justify-between">
+                    <div class="logo">
+                        <h3>Tweety</h3>
+                    </div>
+
+                    <div class="user">
+                        <img src="{{auth()->user()->getAvatar()}}" alt="">
+                        <p>Welcome, {{auth()->user()->name}}</p>
+                    </div>
+                </div> 
             </header>
         </section>
 
