@@ -46,14 +46,28 @@ class User extends Authenticatable
         return $this->hasMany(Tweet::class);
     }
 
+    //return avatar photo api of this user
     public function getAvatar()
     {
         //https://avatars.dicebear.com/api/male/hhh.svg?w=40&h=40
         return "https://avatars.dicebear.com/api/male/" .$this->email.".svg?w=40&h=40";
     }
 
+    // return tweets ordered by desc by this user
     public function timeline()
     {
         return $this->tweets()->latest()->get();
+    }
+
+    // make link to other into follows table
+    public function follow(User $user)
+    {
+        $this->following()->sync($user,false);
+    }
+
+    // return following users of this user
+    public function following()
+    {
+        return $this->belongsToMany(User::class,'follows','user_id','following_user_id');
     }
 }
