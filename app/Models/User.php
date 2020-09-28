@@ -41,9 +41,19 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function tweets()
+    {
+        return $this->hasMany(Tweet::class);
+    }
+
     public function getAvatar()
     {
         //https://avatars.dicebear.com/api/male/hhh.svg?w=40&h=40
         return "https://avatars.dicebear.com/api/male/" .$this->email.".svg?w=40&h=40";
+    }
+
+    public function timeline()
+    {
+        return $this->tweets()->latest()->get();
     }
 }
