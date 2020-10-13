@@ -22,7 +22,7 @@ class TweetsController extends Controller
         public function index()
     {
         $tweets = auth()->user()->timeline();
-        return view('home',[
+        return view('tweets.index',[
             'tweets'=>$tweets
         ]);
     }

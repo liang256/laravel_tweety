@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+//use Illuminate\Support\Facades\Auth as Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,10 +13,15 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::loginUsingId(36);
+Auth::routes();
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
+
+Route::get('/profiles/{user}', [App\Http\Controllers\ProfileController::class, 'show'])
+->name('profile');
 
 Route::get('auth/logout', function(){
 	Auth::logout();
@@ -26,4 +32,3 @@ Route::middleware('auth')->group(function(){
 	Route::post('/tweets', [App\Http\Controllers\TweetsController::class, 'store']);
 });
 
-Auth::routes();

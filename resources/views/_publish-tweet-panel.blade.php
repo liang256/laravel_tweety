@@ -14,6 +14,7 @@
 
         <footer class="flex justify-between">
             <img 
+                href="{{route('profile',Illuminate\Support\Facades\Auth::user()->name)}}"
                 src="{{Illuminate\Support\Facades\Auth::user()->getAvatar()}}" 
                 alt=""
                 class="border rounded-full"

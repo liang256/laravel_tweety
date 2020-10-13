@@ -1,49 +1,49 @@
 <ul>
 	<li>
-		<a class="font-bold text-lg mb-4 block" href="">
+		<a class="font-bold text-lg mb-4 block" href="{{route('home')}}">
 			Home
 		</a>
 	</li>
 
 		<li>
 		<a class="font-bold text-lg mb-4 block" href="">
-			Home
+			Explore
 		</a>
 	</li>
 
 		<li>
 		<a class="font-bold text-lg mb-4 block" href="">
-			Home
+			Notifications
 		</a>
 	</li>
 
 		<li>
 		<a class="font-bold text-lg mb-4 block" href="">
-			Home
+			Messages
 		</a>
 	</li>
 
 		<li>
 		<a class="font-bold text-lg mb-4 block" href="">
-			Home
+			Bookmark
 		</a>
 	</li>
 
 		<li>
 		<a class="font-bold text-lg mb-4 block" href="">
-			Home
+			Lists
+		</a>
+	</li>
+
+		<li>
+		<a class="font-bold text-lg mb-4 block" href="{{route('profile',auth()->user()->name)}}">
+			Profile
 		</a>
 	</li>
 
 		<li>
 		<a class="font-bold text-lg mb-4 block" href="">
-			Home
-		</a>
-	</li>
-
-		<li>
-		<a class="font-bold text-lg mb-4 block" href="">
-			Home
+			More
 		</a>
 	</li>
 </ul>
