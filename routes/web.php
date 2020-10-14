@@ -13,18 +13,23 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Auth::loginUsingId(36);
+//Auth::loginUsingId(36);
 Auth::routes();
 
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
+Route::get('/register', function () {
+    return view('auth.register');
+})->name('register');
+
 Route::get('/profiles/{user}', [App\Http\Controllers\ProfileController::class, 'show'])
 ->name('profile');
 
 Route::get('auth/logout', function(){
 	Auth::logout();
+	return redirect(route('home'));
 });
 
 Route::middleware('auth')->group(function(){

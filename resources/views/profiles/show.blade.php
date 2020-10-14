@@ -1,6 +1,4 @@
-@extends('layouts.app')
-
-@section('content')
+<x-app>
 	<header class="mb-6 relative">
 		<div class="banner mb-2 rounded">
 			<img src="/images/profile-banner.jpg" alt="">
@@ -21,8 +19,8 @@
 		<img 
 			src="{{$user->getAvatar()}}" 
 			alt=""
-			class="rounded-full mr-2 absolute border"
-			style="width: 150px; left: 40%; top: 40%;" 
+			class="rounded-full mr-2 absolute border bg-gray-100"
+			style="width: 150px; left: 40%; top: 30%;" 
 		>
 		
 		<div class="mt-2 text-sm">
@@ -34,4 +32,4 @@
 	</header>
 
 	@include('_timeline')
-@endsection
+</x-app>
