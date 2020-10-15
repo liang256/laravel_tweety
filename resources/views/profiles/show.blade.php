@@ -20,7 +20,11 @@
 			</div>
 
 			<div class="flex justify-between">
-				<a href="" class="bg-blue-400 rounded-full shadow p-2 text-white text-xs">Edit Profile</a>
+				@if(auth()->user()->is($user))
+					<a href="" class="bg-blue-400 rounded-full shadow p-2 text-white text-xs">
+						Edit Profile
+					</a>
+				@endif
 
 				<div class="px-4">
 					<x-follow-button :user="$user"></x-follow-button>
