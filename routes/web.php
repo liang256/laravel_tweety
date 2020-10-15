@@ -33,11 +33,18 @@ Route::get('auth/logout', function(){
 });
 
 Route::middleware('auth')->group(function(){
-	Route::get('/tweets', [App\Http\Controllers\TweetsController::class, 'index'])->name('home');
+	Route::get('/tweets', [
+		App\Http\Controllers\TweetsController::class, 'index'
+	])->name('home');
+
 	Route::post('/tweets', [App\Http\Controllers\TweetsController::class, 'store']);
 
 	Route::post('/profiles/{user:name}/follow', [
 		App\Http\Controllers\FollowsController::class, 'store'
+	]);
+
+	Route::get('/profiles/{user:name}/edit', [
+		App\Http\Controllers\ProfileController::class, 'edit'
 	]);
 });
 

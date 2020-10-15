@@ -20,8 +20,8 @@
 			</div>
 
 			<div class="flex justify-between">
-				@if(auth()->user()->is($user))
-					<a href="" class="bg-blue-400 rounded-full shadow p-2 text-white text-xs">
+				@if(current_user()->is($user))
+					<a href="{{ $user->path('edit') }}" class="bg-blue-400 rounded-full shadow p-2 text-white text-xs">
 						Edit Profile
 					</a>
 				@endif

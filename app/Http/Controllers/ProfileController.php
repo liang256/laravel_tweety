@@ -14,4 +14,12 @@ class ProfileController extends Controller
     		'tweets'=>$user->tweets()->latest()->get()
     	]);
     }
+
+    public function edit(User $user)
+    {
+    	if(current_user()->isNot($user)){
+    		return abort(404);
+    	}
+    	return view('profiles.edit',compact('user'));
+    }
 }
