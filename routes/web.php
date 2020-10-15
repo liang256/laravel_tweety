@@ -45,6 +45,6 @@ Route::middleware('auth')->group(function(){
 
 	Route::get('/profiles/{user:name}/edit', [
 		App\Http\Controllers\ProfileController::class, 'edit'
-	]);
+	])->middleware('can:edit,user');
 });
 

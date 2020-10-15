@@ -20,11 +20,11 @@
 			</div>
 
 			<div class="flex justify-between">
-				@if(current_user()->is($user))
+				@can('edit',$user)
 					<a href="{{ $user->path('edit') }}" class="bg-blue-400 rounded-full shadow p-2 text-white text-xs">
 						Edit Profile
 					</a>
-				@endif
+				@endcan
 
 				<div class="px-4">
 					<x-follow-button :user="$user"></x-follow-button>
