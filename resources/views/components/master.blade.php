@@ -29,7 +29,10 @@
                     </div>
                     @auth
                     <div class="user">
-                        <img src="{{auth()->user()->getAvatar()}}" alt="">
+                        <a href="{{auth()->user()->path()}}">
+                            <img src="{{auth()->user()->getAvatar()}}" alt="">
+                        </a>
+                        
                         <p>Welcome, {{auth()->user()->name}}</p>
                     </div>
                     @endauth

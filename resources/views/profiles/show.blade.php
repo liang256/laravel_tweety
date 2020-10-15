@@ -4,6 +4,15 @@
 			<img src="/images/profile-banner.jpg" alt="">
 		</div>
 
+		<div class="avatar-img">
+			<img 
+				src="{{$user->getAvatar()}}" 
+				alt=""
+				class="rounded-full mr-2 absolute border bg-gray-100"
+				style="width: 150px; left: 40%; top: 30%;" 
+			>
+		</div>
+
 		<div class="flex justify-between items-center">
 			<div>
 				<h2 class="font-bold text-2xl mb-0">{{$user->name}}</h2>
@@ -14,23 +23,11 @@
 				<a href="" class="bg-blue-400 rounded-full shadow p-2 text-white text-xs">Edit Profile</a>
 
 				<div class="px-4">
-					<form action="{{$user->name}}/follow" method="post">
-						@csrf
-						<button class="bg-blue-400 rounded-full shadow p-2 text-white text-xs">	
-							{{auth()->user()->isFollow($user)? "Unfollow" : "Follow Me"}}
-						</button>
-					</form>
+					<x-follow-button :user="$user"></x-follow-button>
 				</div>
 
 			</div>
 		</div>
-
-		<img 
-			src="{{$user->getAvatar()}}" 
-			alt=""
-			class="rounded-full mr-2 absolute border bg-gray-100"
-			style="width: 150px; left: 40%; top: 30%;" 
-		>
 		
 		<div class="mt-2 text-sm">
 			<p>

@@ -65,4 +65,9 @@ class User extends Authenticatable
 
         //return Tweet::where('user_id',$this->id)->latest()->get();
     }
+
+    public function path()
+    {
+        return route('profile',$this->name);
+    }
 }
