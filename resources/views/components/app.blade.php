@@ -1,7 +1,7 @@
 <x-master>
         <section class="px-8">
             <main class="container mx-auto">
-
+                @auth
                     <div class="lg:flex lg:justify-between">
                         <div class="lg:w-1/6">
                             @include ('_sidebar-links')
@@ -15,7 +15,9 @@
                             @include ('_friends-list')
                         </div>
                     </div>
-
+                @else
+                    <p>please <a href="/login">login</a></p>
+                @endauth
             </main>
         </section>
 </x-master>
