@@ -24,7 +24,7 @@ Route::get('/register', function () {
     return view('auth.register');
 })->name('register');
 
-Route::get('/profiles/{user:name}', [App\Http\Controllers\ProfileController::class, 'show'])
+Route::get('/profiles/{user:username}', [App\Http\Controllers\ProfileController::class, 'show'])
 ->name('profile');
 
 Route::get('auth/logout', function(){
@@ -39,11 +39,11 @@ Route::middleware('auth')->group(function(){
 
 	Route::post('/tweets', [App\Http\Controllers\TweetsController::class, 'store']);
 
-	Route::post('/profiles/{user:name}/follow', [
+	Route::post('/profiles/{user:username}/follow', [
 		App\Http\Controllers\FollowsController::class, 'store'
-	]);
+	])->name('follow');
 
-	Route::get('/profiles/{user:name}/edit', [
+	Route::get('/profiles/{user:username}/edit', [
 		App\Http\Controllers\ProfileController::class, 'edit'
 	])->middleware('can:edit,user');
 });
