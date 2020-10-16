@@ -6,7 +6,7 @@
 	</li>
 
 		<li>
-		<a class="font-bold text-lg mb-4 block" href="">
+		<a class="font-bold text-lg mb-4 block" href="{{ route('explore') }}">
 			Explore
 		</a>
 	</li>

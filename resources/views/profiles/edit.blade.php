@@ -1,5 +1,5 @@
 <x-app>
-	<form action="{{ $user->path() }}" method="post" enctype="multipart/form-data ">
+	<form action="{{ $user->path() }}" method="post" enctype="multipart/form-data">
 		@csrf
 		@method('patch')
 

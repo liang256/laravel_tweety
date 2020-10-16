@@ -50,5 +50,9 @@ Route::middleware('auth')->group(function(){
 	Route::patch('/profiles/{user:username}', [
 		App\Http\Controllers\ProfileController::class, 'update'
 	]);
+
+	Route::get('explore', [
+		App\Http\Controllers\ExploreController::class, 'index'
+	])->name('explore');
 });
 
