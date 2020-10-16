@@ -13,12 +13,14 @@
         <hr class="my-4">
 
         <footer class="flex justify-between">
-            <img 
-                href="{{route('profile',Illuminate\Support\Facades\Auth::user()->name)}}"
-                src="{{Illuminate\Support\Facades\Auth::user()->getAvatar()}}" 
-                alt=""
-                class="border rounded-full"
-            >
+            <a href="{{ current_user()->path() }}">
+                <img 
+                    src="{{ current_user()->getAvatar() }}" 
+                    alt=""
+                    class="border rounded-full"
+                    style="width: 40px" 
+                >
+            </a>
             <button 
                 type="submit"
                 class="bg-blue-400 rounded-lg shadow p-2 text-white" 

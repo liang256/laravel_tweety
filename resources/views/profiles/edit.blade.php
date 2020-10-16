@@ -1,5 +1,5 @@
 <x-app>
-	<form action="{{ $user->path() }}" method="post">
+	<form action="{{ $user->path() }}" method="post" enctype="multipart/form-data ">
 		@csrf
 		@method('patch')
 
@@ -13,6 +13,7 @@
 				name="name" 
 				id="name"
 				required 
+				value="{{ $user->name }}" 
 			>
 
 			@error('name')
@@ -30,12 +31,35 @@
 				name="username" 
 				id="username"
 				required 
+				value="{{ $user->username }}"
 			>
 
 			@error('username')
 				<p class="text-red-200 text-xs mt-2">{{ $message }}</p>
 			@enderror
 		</div> <!-- end username-input -->
+
+		<div class="avatar-input mb-6">
+			<label for="avatar" class="block mb-2 uppercase font-bold text-xs text-gray-700">
+				avtar
+			</label>
+
+			<input class="border border-gray-400 p-2 w-full"
+				type="file" 
+				name="avatar" 
+				id="avatar"
+			>
+
+			@error('avatar')
+				<p class="text-red-200 text-xs mt-2">{{ $message }}</p>
+			@enderror
+
+			<img 
+				src="{{ $user->getAvatar() }}"
+				style="width:100px" 
+				alt="your avatar"
+			>
+		</div> <!-- end avtar-input -->
 
 		<div class="email-input mb-6">
 			<label for="email" class="block mb-2 uppercase font-bold text-xs text-gray-700">
@@ -47,6 +71,7 @@
 				name="email" 
 				id="email"
 				required 
+				value="{{ $user->email }}"
 			>
 
 			@error('email')
@@ -71,19 +96,19 @@
 			@enderror
 		</div> <!-- end password-input -->
 
-		<div class="password_comfirmation-input mb-6">
-			<label for="password_comfirmation" class="block mb-2 uppercase font-bold text-xs text-gray-700">
-				password_comfirmation
+		<div class="password_confirmation-input mb-6">
+			<label for="password_confirmation" class="block mb-2 uppercase font-bold text-xs text-gray-700">
+				password confirmation
 			</label>
 
 			<input class="border border-gray-400 p-2 w-full"
 				type="password" 
-				name="password_comfirmation" 
-				id="password_comfirmation"
+				name="password_confirmation" 
+				id="password_confirmation"
 				required 
 			>
 
-			@error('password_comfirmation')
+			@error('password_confirmation')
 				<p class="text-red-200 text-xs mt-2">{{ $message }}</p>
 			@enderror
 		</div> <!-- end password_comfirmation-input -->

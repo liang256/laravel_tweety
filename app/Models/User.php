@@ -46,7 +46,11 @@ class User extends Authenticatable
     //return avatar photo api of this user
     public function getAvatar()
     {
-        //https://avatars.dicebear.com/api/male/hhh.svg?w=40&h=40
+        if($this->avatar){
+            return asset($this->avatar);
+            //return "/storage/{$this->avatar}"; 
+        }
+        
         return "https://avatars.dicebear.com/api/male/" .$this->email.".svg?w=40&h=40";
     }
 

@@ -4,6 +4,7 @@
             <img 
             src="{{$tweet->user->getAvatar()}}"
             class="rounded-full border"
+            style="width:40px" 
             >  
         </a>
 

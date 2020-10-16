@@ -10,6 +10,7 @@
 					src="{{$user->getAvatar()}}" 
 					alt="avatar"
 					class="rounded-full mr-2"
+					style="width:40px" 
 					>
 				</a>
 

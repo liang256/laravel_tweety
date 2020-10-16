@@ -30,7 +30,7 @@
                     @auth
                     <div class="user">
                         <a href="{{auth()->user()->path()}}">
-                            <img src="{{auth()->user()->getAvatar()}}" alt="">
+                            <img src="{{auth()->user()->getAvatar()}}" alt="" style="width:40px">
                         </a>
                         
                         <p>Welcome, {{auth()->user()->name}}</p>

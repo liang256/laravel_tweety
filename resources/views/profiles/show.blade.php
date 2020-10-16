@@ -5,12 +5,14 @@
 		</div>
 
 		<div class="avatar-img">
-			<img 
-				src="{{$user->getAvatar()}}" 
-				alt=""
-				class="rounded-full mr-2 absolute border bg-gray-100"
-				style="width: 150px; left: 40%; top: 30%;" 
-			>
+			<a href="{{ $user->path() }}">
+				<img 
+					src="{{$user->getAvatar()}}" 
+					alt=""
+					class="rounded-full mr-2 absolute border bg-gray-100"
+					style="width: 150px; left: 40%; top: 30%;" 
+				>
+			</a>
 		</div>
 
 		<div class="flex justify-between items-center">

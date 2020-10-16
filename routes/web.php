@@ -30,7 +30,7 @@ Route::get('/profiles/{user:username}', [App\Http\Controllers\ProfileController:
 Route::get('auth/logout', function(){
 	Auth::logout();
 	return redirect(route('home'));
-});
+})->middleware('auth');
 
 Route::middleware('auth')->group(function(){
 	Route::get('/tweets', [
@@ -46,5 +46,9 @@ Route::middleware('auth')->group(function(){
 	Route::get('/profiles/{user:username}/edit', [
 		App\Http\Controllers\ProfileController::class, 'edit'
 	])->middleware('can:edit,user');
+
+	Route::patch('/profiles/{user:username}', [
+		App\Http\Controllers\ProfileController::class, 'update'
+	]);
 });
 
