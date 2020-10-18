@@ -27,10 +27,6 @@ Route::get('/register', function () {
 Route::get('/profiles/{user:username}', [App\Http\Controllers\ProfileController::class, 'show'])
 ->name('profile');
 
-Route::get('auth/logout', function(){
-	Auth::logout();
-	return redirect(route('home'));
-})->middleware('auth');
 
 Route::middleware('auth')->group(function(){
 	Route::get('/tweets', [
@@ -38,6 +34,14 @@ Route::middleware('auth')->group(function(){
 	])->name('home');
 
 	Route::post('/tweets', [App\Http\Controllers\TweetsController::class, 'store']);
+
+	Route::post('/tweets/{tweet}/like', [
+		App\Http\Controllers\TweetsLikeController::class, 'store'
+	])->name('tweet_like');
+
+	Route::delete('/tweets/{tweet}/like', [
+		App\Http\Controllers\TweetsLikeController::class, 'destroy'
+	])->name('tweet_dislike');
 
 	Route::post('/profiles/{user:username}/follow', [
 		App\Http\Controllers\FollowsController::class, 'store'
@@ -54,5 +58,10 @@ Route::middleware('auth')->group(function(){
 	Route::get('explore', [
 		App\Http\Controllers\ExploreController::class, 'index'
 	])->name('explore');
+
+	Route::post('logout', function(){
+		Auth::logout();
+		return redirect(route('home'));
+	})->name('logout');
 });
 

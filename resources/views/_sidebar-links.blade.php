@@ -5,45 +5,24 @@
 		</a>
 	</li>
 
-		<li>
+	<li>
 		<a class="font-bold text-lg mb-4 block" href="{{ route('explore') }}">
 			Explore
 		</a>
 	</li>
 
-		<li>
-		<a class="font-bold text-lg mb-4 block" href="">
-			Notifications
-		</a>
-	</li>
-
-		<li>
-		<a class="font-bold text-lg mb-4 block" href="">
-			Messages
-		</a>
-	</li>
-
-		<li>
-		<a class="font-bold text-lg mb-4 block" href="">
-			Bookmark
-		</a>
-	</li>
-
-		<li>
-		<a class="font-bold text-lg mb-4 block" href="">
-			Lists
-		</a>
-	</li>
-
-		<li>
-		<a class="font-bold text-lg mb-4 block" href="{{route('profile',auth()->user()->name)}}">
+	<li>
+		<a class="font-bold text-lg mb-4 block" href="{{ current_user()->path() }}">
 			Profile
 		</a>
 	</li>
 
-		<li>
-		<a class="font-bold text-lg mb-4 block" href="">
-			More
-		</a>
+	<li>
+		<form action="{{route('logout')}}" method="post">
+			@csrf
+			<button class="font-bold text-lg mb-4 block">
+				logout
+			</button>
+		</form>
 	</li>
 </ul>
