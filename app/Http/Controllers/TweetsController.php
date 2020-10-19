@@ -32,4 +32,17 @@ class TweetsController extends Controller
         $tweet->delete();
         return back();
     }
+
+    public function update(Tweet $tweet)
+    {
+        $tweet->update([
+            'body'=>request('body')
+        ]);
+        return redirect()->route('home');
+    }
+
+    public function edit(Tweet $tweet)
+    {
+        return view('tweets.edit', compact('tweet'));
+    }
 }

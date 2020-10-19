@@ -42,6 +42,16 @@ Route::middleware('auth')->group(function(){
 		App\Http\Controllers\TweetsController::class, 'destroy'
 	])->name('delete_tweet');
 
+	// Edit a tweet
+	Route::get('/tweets/{tweet}/edit', [
+		App\Http\Controllers\TweetsController::class, 'edit'
+	])->name('edit_tweet');
+
+	// Update a tweet
+	Route::patch('/tweets/{tweet}', [
+		App\Http\Controllers\TweetsController::class, 'update'
+	])->name('update_tweet');
+
 	Route::post('/tweets/{tweet}/like', [
 		App\Http\Controllers\TweetsLikeController::class, 'store'
 	])->name('tweet_like');

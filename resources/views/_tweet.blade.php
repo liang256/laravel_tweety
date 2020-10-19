@@ -19,45 +19,31 @@
             {{$tweet->body}}
         </p>
 
-        <div class="like-buttons flex items-center text-sm"
-        >
-            <div class="flex mr-2
-            {{ ($tweet->isLikedBy(current_user()) ? 'text-blue-400' : 'text-gray-500') }}
-            ">
-                <form action="{{ route('tweet_like', $tweet->id) }}" method="post">
-                    @csrf
-                    <button>
-                        like: 
-                    </button>
-                </form>
-                <p>{{ ($tweet->likes==Null ? 0 : $tweet->likes) }}</p>
-            </div>
-
-            <div class="flex
-            {{ ($tweet->isDislikedBy(current_user()) ? 'text-blue-400' : 'text-gray-500') }}
-            ">
-                <form action="{{ route('tweet_like', $tweet->id) }}" method="post">
-                    @csrf
-                    @method('delete')
-                    <button>
-                        dislike: 
-                    </button>       
-                </form>  
-                <p>{{ ($tweet->dislikes==Null ? 0 : $tweet->dislikes) }}</p>
-            </div>
-        </div> <!-- end like-buttons -->
+        <x-like-buttons :tweet="$tweet"></x-like-buttons>
     </div> <!-- end tweet-body --> 
 
     @can('edit', $tweet->user)
-        <div class="delete-button mr-0 ml-auto g-blue-400 rounded bg-blue-400 shadow text-white text-xs flex items-center px-3 my-5 hover:bg-blue-600">
-            <form action="{{ route('delete_tweet', $tweet->id) }}" method="post">
-                @csrf
-                @method('delete')
+        <div class="delete-button mr-0 ml-auto ">
+            <div class="delete-button rounded bg-blue-400 shadow text-white text-xs flex items-center px-3 my-1 hover:bg-blue-600 justify-between">
+                <form action="{{ route('delete_tweet', $tweet->id) }}" method="post">
+                    @csrf
+                    @method('delete')
 
-                <button>
-                    Delete
-                </button>
-            </form>
+                    <button class="">
+                        Delete
+                    </button>
+                </form>  
+            </div>
+
+            <div class="edit-button rounded bg-blue-400 shadow text-white text-xs flex items-center px-3 my-1 hover:bg-blue-600 flex">
+                <form action="{{ route('edit_tweet', $tweet->id) }}" method="get">
+                    @csrf
+
+                    <button class="">
+                        Edit
+                    </button>
+                </form>  
+            </div>
         </div>
     @endcan
 </div>
