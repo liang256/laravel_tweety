@@ -46,5 +46,18 @@
                 <p>{{ ($tweet->dislikes==Null ? 0 : $tweet->dislikes) }}</p>
             </div>
         </div> <!-- end like-buttons -->
-    </div>  
+    </div> <!-- end tweet-body --> 
+
+    @can('edit', $tweet->user)
+        <div class="delete-button mr-0 ml-auto g-blue-400 rounded bg-blue-400 shadow text-white text-xs flex items-center px-3 my-5 hover:bg-blue-600">
+            <form action="{{ route('delete_tweet', $tweet->id) }}" method="post">
+                @csrf
+                @method('delete')
+
+                <button>
+                    Delete
+                </button>
+            </form>
+        </div>
+    @endcan
 </div>

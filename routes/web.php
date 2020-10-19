@@ -29,11 +29,18 @@ Route::get('/profiles/{user:username}', [App\Http\Controllers\ProfileController:
 
 
 Route::middleware('auth')->group(function(){
+	// Show the timeline, home page
 	Route::get('/tweets', [
 		App\Http\Controllers\TweetsController::class, 'index'
 	])->name('home');
 
+	// Create a new tweet
 	Route::post('/tweets', [App\Http\Controllers\TweetsController::class, 'store']);
+
+	// Delete a tweet
+	Route::delete('/tweets/{tweet}', [
+		App\Http\Controllers\TweetsController::class, 'destroy'
+	])->name('delete_tweet');
 
 	Route::post('/tweets/{tweet}/like', [
 		App\Http\Controllers\TweetsLikeController::class, 'store'
