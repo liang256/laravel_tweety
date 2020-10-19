@@ -6,4 +6,9 @@
     		<p>No tweets yet</p>
     	</div>
     @endforelse
+
+</div>
+
+<div class="page-links mt-3 mb-10">
+	{{ $tweets->links() }}
 </div>

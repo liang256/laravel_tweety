@@ -1,8 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-//use Illuminate\Support\Facades\Auth as Auth;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,7 +11,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-//Auth::loginUsingId(36);
+
 Auth::routes();
 
 Route::get('/', function () {
@@ -52,10 +50,12 @@ Route::middleware('auth')->group(function(){
 		App\Http\Controllers\TweetsController::class, 'update'
 	])->name('update_tweet');
 
+	// Like a tweet
 	Route::post('/tweets/{tweet}/like', [
 		App\Http\Controllers\TweetsLikeController::class, 'store'
 	])->name('tweet_like');
 
+	// dislike a tweet
 	Route::delete('/tweets/{tweet}/like', [
 		App\Http\Controllers\TweetsLikeController::class, 'destroy'
 	])->name('tweet_dislike');

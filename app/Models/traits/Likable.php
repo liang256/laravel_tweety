@@ -37,12 +37,19 @@ trait Likable
 				'liked'=>$like
 			]);
 		}
-		
 	}
 
 	public function dislike(User $user=Null)
 	{
 		return $this->like($user, false);
+	}
+
+	public function deleteLikeBy(User $user)
+	{
+		Like::where([
+			'user_id'=>$user->id,
+			'tweet_id'=>$this->id
+		])->delete();
 	}
 
 	public function isLikedBy(User $user)
