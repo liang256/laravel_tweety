@@ -23,7 +23,6 @@ class ProfileController extends Controller
 
     public function update(User $user)
     {
-        //dd(request('avatar'));
         $attributes = request()->validate([
             'username' => [
                 'string',
@@ -45,6 +44,11 @@ class ProfileController extends Controller
                 'required', 
                 'max:255', 
                 Rule::unique('users')->ignore($user)
+            ],
+            'self_description' => [
+                'string',
+                'max:255',
+                'required',
             ],
             'password' => [
                 'string',

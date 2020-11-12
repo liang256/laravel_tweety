@@ -1,7 +1,11 @@
 <x-app>
 	<header class="mb-6 relative">
-		<div class="banner mb-2 rounded">
-			<img src="/images/profile-banner.jpg" alt="">
+		<div class="banner mb-2 rounded-lg flex justify-center bg-gray-400 w-full" style="height:220px;">
+			@if($user['cover'])
+				<img src="{{ $user['cover'] }}" alt="cover">
+			@else
+				<div class="text-white mt-2">No Cover Yet</div>
+			@endif
 		</div>
 
 		<div class="avatar-img">
@@ -35,10 +39,7 @@
 			</div>
 		</div>
 		
-		<div class="mt-2 text-sm">
-			<p>
-				Hi, I'm Jeffrey. I'm the creator of Laracasts and spend most of my days building the site and thinking of new ways to teach confusing concepts. I live in Orlando, Florida with my wife and two kids.
-			</p>
+			<p>{{$user->self_description}}</p>
 		</div>
 
 	</header>
