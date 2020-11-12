@@ -23,19 +23,31 @@
 <body>
     <div id="app">
         <section class="px-8 mb-4">
-            <header class="container mx-auto border">
-                <div class="flex justify-between">
-                    <div class="logo">
-                        <h3>Tweety</h3>
+            <header class="container mx-auto bg-blue-100 py-2 px-2 rounded-lg">
+                <div class="flex justify-between items-center mb-1">
+                    <div class="logo mx-2 text-blue-800 text-3xl">
+                        <a href="{{route('home')}}">
+                            <h3>Tweety</h3>    
+                        </a>
                     </div>
                     @auth
-                    <div class="user">
-                        <a href="{{auth()->user()->path()}}">
-                            <img src="{{auth()->user()->getAvatar()}}" alt="" style="width:40px">
-                        </a>
-                        
-                        <p>Welcome, {{auth()->user()->name}}</p>
-                    </div>
+                        <div class="user flex items-center">
+                            <div class="rounded rounded-full w-10 bg-white">
+                                <a href="{{auth()->user()->path()}}">
+                                    <img src="{{auth()->user()->getAvatar()}}" alt="" style="width:40px">
+                                </a>    
+                            </div>
+                            
+                            
+                            <p class="mx-1">
+                                Welcome, <span class="text-blue-500">{{auth()->user()->name}}</span>
+                            </p>
+                        </div>
+                    @else
+                        <div class="flex space-x-2">
+                            <a href="{{ route('login') }}">Login</a>
+                            <a href="{{ route('register') }}">Register</a>    
+                        </div>    
                     @endauth
                 </div> 
             </header>
