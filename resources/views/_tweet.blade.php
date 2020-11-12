@@ -23,8 +23,8 @@
     </div> <!-- end tweet-body --> 
 
     @can('edit', $tweet->user)
-        <div class="delete-button mr-0 ml-auto ">
-            <div class="delete-button rounded bg-blue-400 shadow text-white text-xs flex items-center px-3 my-1 hover:bg-blue-600 justify-between">
+        <div class="edit-buttons mr-0 ml-auto bg-gray">
+            <div class="delete-button rounded bg-gray-400 shadow text-white text-xs flex items-center px-2 my-1 hover:bg-gray-600 justify-between">
                 <form action="{{ route('delete_tweet', $tweet->id) }}" method="post">
                     @csrf
                     @method('delete')
@@ -35,7 +35,7 @@
                 </form>  
             </div>
 
-            <div class="edit-button rounded bg-blue-400 shadow text-white text-xs flex items-center px-3 my-1 hover:bg-blue-600 flex">
+            <div class="edit-button rounded bg-gray-400 shadow text-white text-xs flex items-center px-2 my-1 hover:bg-gray-600 justify-between">
                 <form action="{{ route('edit_tweet', $tweet->id) }}" method="get">
                     @csrf
 

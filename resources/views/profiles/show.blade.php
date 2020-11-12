@@ -19,10 +19,10 @@
 			</a>
 		</div>
 
-		<div class="flex justify-between items-center">
+		<div class="flex justify-between items-center px-4">
 			<div>
 				<h2 class="font-bold text-2xl mb-0">{{$user->name}}</h2>
-				<p class="text-sm">Joined at {{$user->created_at->diffForHumans()}}</p>
+				<p class="text-sm text-gray-400">Joined at {{$user->created_at->diffForHumans()}}</p>
 			</div>
 
 			<div class="flex justify-between">
@@ -32,13 +32,13 @@
 					</a>
 				@endcan
 
-				<div class="px-4">
+				<div class="">
 					<x-follow-button :user="$user"></x-follow-button>
 				</div>
-
 			</div>
 		</div>
 		
+		<div class="mt-2 text-sm px-4">
 			<p>{{$user->self_description}}</p>
 		</div>
 
