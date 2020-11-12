@@ -60,7 +60,8 @@ class ProfileController extends Controller
         ]);
 
         if(request('avatar')){
-            $attributes['avatar'] = request('avatar')->store('avatars'); 
+            $attributes['avatar'] = request('avatar')
+                ->storeAs('avatars', 'avatar_'.request()->user()->id.'jpg'); 
         }
         
         $user->update($attributes);
