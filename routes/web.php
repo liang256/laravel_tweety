@@ -14,10 +14,6 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
-
 Route::get('/register', function () {
     return view('auth.register');
 })->name('register');
@@ -28,9 +24,13 @@ Route::get('/profiles/{user:username}', [App\Http\Controllers\ProfileController:
 
 Route::middleware('auth')->group(function(){
 	// Show the timeline, home page
-	Route::get('/tweets', [
+	Route::get('/', [
 		App\Http\Controllers\TweetsController::class, 'index'
 	])->name('home');
+
+	Route::get('/tweets', [
+		App\Http\Controllers\TweetsController::class, 'index'
+	]);
 
 	// Create a new tweet
 	Route::post('/tweets', [App\Http\Controllers\TweetsController::class, 'store']);
