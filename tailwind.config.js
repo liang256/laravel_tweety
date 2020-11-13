@@ -4,7 +4,8 @@ module.exports = {
     // purgeLayersByDefault: true,
   },
   purge: [
-    './app/*.php'
+    './app/**/*.php',
+    './resources/**/*.php',
   ],
   target: 'relaxed',
   prefix: '',
