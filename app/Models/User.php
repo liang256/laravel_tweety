@@ -47,8 +47,8 @@ class User extends Authenticatable
     public function getAvatar()
     {
         if($this->avatar){
-            return asset($this->avatar);
-            //return "/storage/{$this->avatar}"; 
+            //return asset($this->avatar);
+            return "/storage/{$this->avatar}"; 
         }
         
         return "https://avatars.dicebear.com/api/male/" .$this->email.".svg?w=40&h=40";
